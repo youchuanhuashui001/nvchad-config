@@ -22,3 +22,18 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+
+-- 配置 C 语言、Python 和汇编的 LSP
+local servers = { 
+  "clangd",     -- C/C++ 语言服务器
+  "pylsp",      -- Python 语言服务器
+}
+
+-- 基础 LSP 配置
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  }
+end

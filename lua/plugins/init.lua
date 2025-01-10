@@ -1,11 +1,24 @@
 return {
   {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        -- 基础
+        "vim", "lua", "vimdoc",
+        -- 开发语言
+        "c", "python",
+        -- 汇编支持 (只保留 nasm)
+        "nasm",
+        -- 常用格式
+        "json", "yaml", "markdown",
+      },
+      highlight = {
+        enable = true,
+      },
+    },
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  -- LSP 配置
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,13 +26,4 @@ return {
     end,
   },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }
